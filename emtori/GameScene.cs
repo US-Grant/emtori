@@ -1,5 +1,6 @@
 ﻿using System;
 using CocosSharp;
+using emtori.Models;
 using emtori.ViewModels;
 
 namespace emtori
@@ -11,8 +12,9 @@ namespace emtori
 
         public GameScene(CCGameView gameView) : base(gameView)
         {
-            gameFieldView = new GameFieldView();
+            gameFieldView = new GameFieldView(new GameField(5));
             this.AddChild(gameFieldView);
+            
         }
     }
 }

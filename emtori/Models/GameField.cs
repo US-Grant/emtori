@@ -7,17 +7,23 @@ namespace emtori.Models
 
         private readonly int size;
 
-        public int Size {  get { return size; } }
+        public int Size { get { return size; } }
 
         private readonly int black = 2;
 
         private GameFieldCell[][] field;
+
+        public GameFieldCell [][] Cells 
+        {
+            get { return field; }
+        }
 
         public GameField(int size)
         {
             this.size = size;
             field = new GameFieldCell[size][];
             Init();
+            Generate();
         }
 
         private void Init()
