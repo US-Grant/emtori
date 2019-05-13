@@ -13,6 +13,11 @@ namespace emtori
     [DesignTimeVisible(true)]
     public partial class MainPage : ContentPage
     {
+        void Handle_Clicked_1(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new SettingsPage());
+        }
+
         void Handle_Clicked(object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new GamePage());
