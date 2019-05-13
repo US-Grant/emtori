@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:cf="clr-namespace:CocosSharp;assembly=CocosSharp.Forms"
+             x:Class="emtori.GamePage">
+    <StackLayout>
+         <cf:CocosSharpView x:Name="CocosView"
+                         Grid.Row="0"
+                         ResolutionPolicy="ShowAll"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         BackgroundColor="White" />
+    </StackLayout>    
+</ContentPage>
