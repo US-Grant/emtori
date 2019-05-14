@@ -9,7 +9,7 @@
                     </TableSection>
                     <TableSection>
                         <TextCell Text="Game rules"/>
-                        <TextCell Text="Records"/>
+                        <TextCell Text="Records" Tapped="Handle_Tapped"/>
                     </TableSection>
                 </TableRoot>
             </TableView.Root>

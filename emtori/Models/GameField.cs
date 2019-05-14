@@ -18,9 +18,9 @@ namespace emtori.Models
             get { return field; }
         }
 
-        public GameField(int size)
+        public GameField(Difficulty difficulty)
         {
-            this.size = size;
+            this.size = (int)difficulty;
             field = new GameFieldCell[size][];
             Init();
             Generate();

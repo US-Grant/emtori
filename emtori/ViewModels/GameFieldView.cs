@@ -38,6 +38,8 @@ namespace emtori.ViewModels
 
         private int cellSize;
 
+        public event EventHandler<EventArgs> Done;
+
 
         public GameFieldView(GameField field, bool isEmoji) : base()
         {
@@ -100,7 +102,8 @@ namespace emtori.ViewModels
 
         private async void OnCellTouched(object sender, EventArgs e)
         {
-            await CheckField();
+            if (await CheckField())
+                Done?.Invoke(this, new EventArgs());
         }
 
         private async Task<bool> CheckField() 

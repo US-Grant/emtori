@@ -20,9 +20,14 @@ namespace emtori
 
         }
 
-        void Handle_OnChanged(object sender, ToggledEventArgs e)
+        private void Handle_OnChanged(object sender, ToggledEventArgs e)
         {
             Preferences.Set("emoji", e.Value);
+        }
+
+        private async void Handle_Tapped(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new RecordsPage());
         }
     }
 }
