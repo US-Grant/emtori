@@ -15,9 +15,12 @@ namespace emtori
 
         private GameScene gameScene;
 
-        public GamePage()
+        private int difficulty;
+
+        public GamePage(int difficulty)
         {
             InitializeComponent();
+            this.difficulty = difficulty;
             CocosView.ViewCreated += CocosView_ViewCreated;
 
         }
@@ -28,7 +31,7 @@ namespace emtori
             {
                 gameView.DesignResolution = new CCSizeI(screenWidth, screenHeight);
                 gameView.ResolutionPolicy = CCViewResolutionPolicy.FixedHeight;
-                gameScene = new GameScene(gameView, Preferences.Get("emoji", false));
+                gameScene = new GameScene(gameView, difficulty, Preferences.Get("emoji", false));
                 //gameScene.IsEmoji = Preferences.Get("emoji", false);
                 gameView.RunWithScene(gameScene);
             }

@@ -60,11 +60,10 @@ namespace emtori.Models
 
                 if (!GenerateBlackCells()) continue;
                 if (!GenerateWhiteCells()) continue;
-
                 GenerateBlackValues();
-
                 generate = false;
             }
+            ResetFreedomValues();
         }
 
         private bool GenerateBlackCells()
@@ -241,6 +240,17 @@ namespace emtori.Models
                             }
                         }
                     }
+                }
+            }
+        }
+
+        public void ResetFreedomValues()
+        {
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    field[i][j].Freedom = 0;
                 }
             }
         }

@@ -48,31 +48,37 @@ namespace emtori.ViewModels
                         isEmoji = false;
                         fillColor = CCColor4B.Black;
                         textColor = CCColor3B.DarkGray;
+                        cell.Freedom = -1;
                         break;
                     case CellState.WHITE:
                         isEmoji = false;
                         fillColor = CCColor4B.White;
                         textColor = CCColor3B.DarkGray;
+                        cell.Freedom = 1;
                         break;
                     case CellState.NEUTRAL:
                         isEmoji = false;
                         fillColor = CCColor4B.LightGray;
                         textColor = CCColor3B.DarkGray;
+                        cell.Freedom = 0;
                         break;
                     case CellState.EMOJI_BLACK:
                         isEmoji = true;
                         fillColor = CCColor4B.Black;
                         textColor = CCColor3B.DarkGray;
+                        cell.Freedom = -1;
                         break;
                     case CellState.EMOJI_WHITE:
                         isEmoji = true;
                         fillColor = CCColor4B.White;
                         textColor = CCColor3B.Yellow;
+                        cell.Freedom = 1;
                         break;
                     case CellState.EMOJI_NEUTRAL:
                         isEmoji = true;
                         fillColor = CCColor4B.LightGray;
                         textColor = CCColor3B.Yellow;
+                        cell.Freedom = 0;
                         break;
                 }
             }
@@ -124,15 +130,17 @@ namespace emtori.ViewModels
 
         private CCEventListenerTouchAllAtOnce touchListener;
 
+        public event EventHandler<EventArgs> OnTouched;
 
-        public GameFieldCellView(GameFieldCell cell, int size, CCPoint position) : base()
+
+        public GameFieldCellView(ref GameFieldCell cell, int size, CCPoint position) : base()
         {
             this.cell = cell;
             this.size = size;
             this.position = position;
             this.isEmoji = false;
             this.State = CellState.NEUTRAL;
-            label = new CCLabel(cell.Value.ToString(), "Arial", 100)
+            label = new CCLabel(cell.Value.ToString(), "San Fransisco", 100)
             {
                 Position = new CCPoint(position.X + size / 2, position.Y + size / 2),
                 HorizontalAlignment = CCTextAlignment.Center,
@@ -149,6 +157,7 @@ namespace emtori.ViewModels
         {
             if (new CCRect(position.X, position.Y, size, size).ContainsPoint(touches[0].Location))
             {
+                OnTouched?.Invoke(this, new EventArgs());
                 if (isEmoji)
                 {
                     if (this.State == CellState.EMOJI_NEUTRAL)

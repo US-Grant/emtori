@@ -10,10 +10,23 @@ namespace emtori
 
         private GameFieldView gameFieldView;
 
-        public GameScene(CCGameView gameView, bool isEmoji) : base(gameView)
+        private int difficulty;
+
+        public GameScene(CCGameView gameView, int difficulty, bool isEmoji) : base(gameView)
         {
-            gameFieldView = new GameFieldView(new GameField(5), isEmoji);
+            this.difficulty = difficulty;
+            gameFieldView = new GameFieldView(new GameField(difficulty), isEmoji);
             this.AddChild(gameFieldView);
+        }
+
+        public void SaveGame()
+        {
+
+        }
+
+        public void LoadGame()
+        {
+
         }
 
     }

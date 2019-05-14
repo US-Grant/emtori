@@ -18,9 +18,21 @@ namespace emtori
             Navigation.PushAsync(new SettingsPage());
         }
 
-        void Handle_Clicked(object sender, System.EventArgs e)
+        async void Handle_Clicked(object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new GamePage());
+            string action = await DisplayActionSheet("Select difficulty", "Cansel", null, "Easy", "Medium", "Hard");
+            switch (action)
+            {
+                case "Easy":
+                    await Navigation.PushAsync(new GamePage(4));
+                    break;
+                case "Medium":
+                    await Navigation.PushAsync(new GamePage(5));
+                    break;
+                case "Hard":
+                    await Navigation.PushAsync(new GamePage(6));
+                    break;
+            }
         }
 
         public MainPage()
