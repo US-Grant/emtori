@@ -7,7 +7,27 @@ namespace emtori.ViewModels
     public class GameFieldView : CCLayer
     {
 
+        private bool isEmoji = false;
 
+        public bool IsEmoji
+        {
+            get
+            {
+                return isEmoji;
+            }
+            set
+            {
+                isEmoji = value;
+                for (int i = 0; i < cells.Length; i++)
+                {
+                    for (int j = 0; j < cells[i].Length; j++)
+                    {
+                        cells[i][j].IsEmoji = value;
+                    }
+                }
+                DrawCells();
+            }
+        }
 
         private GameField field;
 
@@ -16,7 +36,7 @@ namespace emtori.ViewModels
         private int cellSize;
 
 
-        public GameFieldView(GameField field) : base()
+        public GameFieldView(GameField field, bool isEmoji) : base()
         {
             this.field = field;
             cellSize = 1080 / field.Size;
@@ -30,6 +50,7 @@ namespace emtori.ViewModels
                     this.AddChild(cells[i][j]);
                 }
             }
+            IsEmoji = isEmoji;
             DrawLines();
             DrawCells();
         }

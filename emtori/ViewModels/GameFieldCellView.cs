@@ -18,8 +18,6 @@ namespace emtori.ViewModels
             EMOJI_NEUTRAL
         }
 
-
-
         private Dictionary<int, string> emojiDict = new Dictionary<int, string> 
         {
             { 1, "\ud83d\ude03" },
@@ -90,7 +88,38 @@ namespace emtori.ViewModels
 
         private bool isEmoji;
 
+        public bool IsEmoji
+        {
+            get { return isEmoji; }
+            set
+            {
+                isEmoji = value;
+                switch (state)
+                {
+                    case CellState.BLACK:
+                        State = value ? CellState.EMOJI_BLACK : State;
+                        break;
+                    case CellState.WHITE:
+                        State = value ? CellState.EMOJI_WHITE : State;
+                        break;
+                    case CellState.NEUTRAL:
+                        State = value ? CellState.EMOJI_NEUTRAL : State;
+                        break;
+                    case CellState.EMOJI_BLACK:
+                        State = value ? CellState.BLACK : State;
+                        break;
+                    case CellState.EMOJI_WHITE:
+                        State = value ? CellState.WHITE : State;
+                        break;
+                    case CellState.EMOJI_NEUTRAL:
+                        State = value ? CellState.NEUTRAL : State;
+                        break;
+                }
+            }
+        }
+
         private GameFieldCell cell;
+
         private int size;
 
         private CCEventListenerTouchAllAtOnce touchListener;
@@ -113,34 +142,7 @@ namespace emtori.ViewModels
             this.AddChild(label);
             this.touchListener = new CCEventListenerTouchAllAtOnce();
             this.touchListener.OnTouchesBegan += TouchListener_OnTouchesBegan;
-            this.touchListener.OnTouchesEnded += TouchListener_OnTouchesEnded;
-            this.touchListener.OnTouchesMoved += TouchListener_OnTouchesMoved;
             this.AddEventListener(this.touchListener);
-        }
-
-        void TouchListener_OnTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
-        {
-            /*if (isEmoji)
-            {
-                this.State = CellState.EMOJI_NEUTRAL;
-            }
-            else
-            {
-                this.State = CellState.BLACK;
-            }
-            DrawCell();
-            if (new CCRect(position.X, position.Y, size, size).ContainsPoint(touches[0].Location))
-            {
-                if (isEmoji)
-                {
-                    this.State = CellState.EMOJI_WHITE;
-                }
-                else
-                {
-                    this.State = CellState.WHITE;
-                }
-                DrawCell();
-            }*/
         }
 
         void TouchListener_OnTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
@@ -167,19 +169,6 @@ namespace emtori.ViewModels
                 }
                 DrawCell();
             }
-        }
-
-        void TouchListener_OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
-        {
-            /*if (isEmoji)
-            {
-                this.State = CellState.EMOJI_NEUTRAL;
-            }
-            else
-            {
-                this.State = CellState.NEUTRAL;
-            }
-            DrawCell();*/
         }
 
 

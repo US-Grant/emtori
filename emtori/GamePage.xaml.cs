@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CocosSharp;
-using CocosDenshion;
+using Xamarin.Essentials;
 
 using Xamarin.Forms;
 
@@ -28,7 +28,8 @@ namespace emtori
             {
                 gameView.DesignResolution = new CCSizeI(screenWidth, screenHeight);
                 gameView.ResolutionPolicy = CCViewResolutionPolicy.FixedHeight;
-                gameScene = new GameScene(gameView);
+                gameScene = new GameScene(gameView, Preferences.Get("emoji", false));
+                //gameScene.IsEmoji = Preferences.Get("emoji", false);
                 gameView.RunWithScene(gameScene);
             }
         }

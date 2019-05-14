@@ -10,11 +10,11 @@ namespace emtori
 
         private GameFieldView gameFieldView;
 
-        public GameScene(CCGameView gameView) : base(gameView)
+        public GameScene(CCGameView gameView, bool isEmoji) : base(gameView)
         {
-            gameFieldView = new GameFieldView(new GameField(5));
+            gameFieldView = new GameFieldView(new GameField(5), isEmoji);
             this.AddChild(gameFieldView);
-            
         }
+
     }
 }

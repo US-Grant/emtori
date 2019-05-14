@@ -5,7 +5,7 @@
             <TableView.Root>
                 <TableRoot>
                     <TableSection>
-                        <SwitchCell Text="Emoji" On="false"/>
+                        <SwitchCell Text="Emoji" On="{Binding Emoji}" OnChanged="Handle_OnChanged"/>
                     </TableSection>
                     <TableSection>
                         <TextCell Text="Game rules"/>
