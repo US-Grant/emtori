@@ -8,8 +8,8 @@
                         <SwitchCell Text="Emoji" On="{Binding Emoji}" OnChanged="Handle_OnChanged"/>
                     </TableSection>
                     <TableSection>
-                        <TextCell Text="Game rules"/>
-                        <TextCell Text="Records" Tapped="Handle_Tapped"/>
+                        <TextCell Text="Game rules" Tapped="Rules_Tapped"/>
+                        <TextCell Text="Records" Tapped="Records_Tapped"/>
                     </TableSection>
                 </TableRoot>
             </TableView.Root>

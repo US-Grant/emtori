@@ -140,7 +140,7 @@ namespace emtori.ViewModels
             this.position = position;
             this.isEmoji = false;
             this.State = CellState.NEUTRAL;
-            label = new CCLabel(cell.Value.ToString(), "San Fransisco", 100)
+            label = new CCLabel(cell.Value.ToString(), "San Fransisco", size / 2)
             {
                 Position = new CCPoint(position.X + size / 2, position.Y + size / 2),
                 HorizontalAlignment = CCTextAlignment.Center,

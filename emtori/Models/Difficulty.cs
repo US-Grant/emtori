@@ -3,8 +3,8 @@ namespace emtori.Models
 {
     public enum Difficulty
     {
-        EASY = 4,
-        MEDIUM = 5, 
-        HARD = 6
+        EASY = 5,
+        MEDIUM = 7, 
+        HARD = 9
     }
 }

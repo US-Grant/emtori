@@ -25,9 +25,14 @@ namespace emtori
             Preferences.Set("emoji", e.Value);
         }
 
-        private async void Handle_Tapped(object sender, System.EventArgs e)
+        private async void Records_Tapped(object sender, System.EventArgs e)
         {
             await Navigation.PushAsync(new RecordsPage());
+        }
+
+        private async void Rules_Tapped(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new TutorialPage());
         }
     }
 }
